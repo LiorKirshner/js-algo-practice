@@ -12,7 +12,7 @@ Notice that num is also included in the returned array.
 */
 
 function arrayOfMultiples(/*args*/) {
-  //your code!
+  //your code
   const num = arguments[0];
   const length = arguments[1];
   let arr = [num];
