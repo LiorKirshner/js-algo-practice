@@ -11,12 +11,7 @@ Notes
 If the input tries to divide by 0, return: "Can't divide by 0!"
 */
 
-function calculator(/*args*/) {
-  //your code
-  const num1 = arguments[0];
-  const operator = arguments[1];
-  const num2 = arguments[2];
-
+function calculator(num1, operator, num2) {
   if (num2 == 0) return "Can't divide by 0!";
   if (operator == "+") return num1 + num2;
   else if (operator == "-") return num1 - num2;

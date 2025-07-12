@@ -1,5 +1,6 @@
 /*
-Write a function that returns true if you can partition an array into one element and the rest, such that this element is equal to the product of all other elements excluding itself.
+Write a function that returns true if you can partition an array into one element and the rest, 
+such that this element is equal to the product of all other elements excluding itself.
 
 Examples
 canPartition([2, 8, 4, 1]) ➞ true
@@ -13,8 +14,16 @@ The array may contain duplicates.
 Multiple solutions can exist, any solution is sufficient to return true.
 */
 
-function canPartition( /*args*/ ) {
-  //your code
+function canPartition(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let multiple = 1;
+    for (let j = 0; j < arr.length; j++) {
+      if (i === j) continue;
+      multiple *= arr[j];
+    }
+    if (multiple == arr[i]) return true;
+  }
+  return false;
 }
 
 exports.solution = canPartition;
