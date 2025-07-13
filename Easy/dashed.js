@@ -10,8 +10,17 @@ Notes
 A string can contain uppercase and lowercase vowels.
 */
 
-function dashed( /*args*/ ) {
-  //your code
+function dashed(str) {
+  return str
+    .split("")
+    .map((char) => {
+      if ("aeiouAEIOU".includes(char)) {
+        return "-" + char + "-";
+      } else {
+        return char;
+      }
+    })
+    .join("");
 }
 
 exports.solution = dashed;

@@ -30,8 +30,20 @@ Notes
 All inputs are strings, no uppercases and all output must be strings.
 */
 
-function encrypt( /*args*/ ) {
-  //your code
+function encrypt(input) {
+  input = input
+    .split("")
+    .reverse()
+    .map((c) => {
+      if (c === "a") return "0";
+      if (c === "e") return "1";
+      if (c === "i" || c === "o") return "2";
+      if (c === "u") return "3";
+      return c;
+    })
+    .join("");
+
+  return input + "aca";
 }
 
 exports.solution = encrypt;
