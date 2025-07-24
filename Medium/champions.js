@@ -34,9 +34,42 @@ champions([
 ])
 ➞ "Manchester United"
 */
+//Total Points = 3 * wins + 0 * loss + 1 * draws = 3 * 30 + 0 * 3 + 5 * 1 = 95 points
+function champions(clubs) {
+  let topClub = clubs[0];
+  let topPoints = topClub.wins * 3 + topClub.draws;
+  let topGoalDiff = topClub.scored - topClub.conceded;
 
-function champions( /*args*/ ) {
-  //your code
+  for (let club of clubs) {
+    let points = club.wins * 3 + club.draws;
+    let goalDiff = club.scored - club.conceded;
+
+    if (
+      points > topPoints ||
+      (points === topPoints && goalDiff > topGoalDiff)
+    ) {
+      topClub = club;
+      topPoints = points;
+      topGoalDiff = goalDiff;
+    }
+  }
+  console.log(topClub.name);
+  return topClub.name;
 }
+
+const teams = [
+  {
+    name: "Manchester United",
+    wins: 30,
+    loss: 3,
+    draws: 5,
+    scored: 88,
+    conceded: 20,
+  },
+  { name: "Arsenal", wins: 24, loss: 6, draws: 8, scored: 98, conceded: 29 },
+  { name: "Chelsea", wins: 22, loss: 8, draws: 8, scored: 98, conceded: 29 },
+];
+
+console.log(champions(teams));
 
 exports.solution = champions;
