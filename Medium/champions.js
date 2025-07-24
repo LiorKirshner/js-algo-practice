@@ -34,7 +34,8 @@ champions([
 ])
 ➞ "Manchester United"
 */
-function champions(clubs) {
+
+/*function champions(clubs) {
   let topClub = clubs[0];
   let topPoints = topClub.wins * 3 + topClub.draws;
   let topGoalDiff = topClub.scored - topClub.conceded;
@@ -55,5 +56,22 @@ function champions(clubs) {
   console.log(topClub.name);
   return topClub.name;
 }
-
+*/
+function champions(clubs) {
+  return clubs
+    .map((club) => ({
+      ...club,
+      points: club.wins * 3 + club.draws,
+      goalDiff: club.scored - club.conceded,
+    }))
+    .reduce((top, current) => {
+      if (
+        current.points > top.points ||
+        (current.points === top.points && current.goalDiff > top.goalDiff)
+      ) {
+        return current;
+      }
+      return top;
+    }).name;
+}
 exports.solution = champions;
