@@ -33,8 +33,14 @@ Notes
 The highest score has a rank value of 1..
 */
 
-function competitionRank( /*args*/ ) {
-  //your code
+function competitionRank(scores, targetName) {
+  const values = Object.values(scores);
+
+  // סינון כל מי שציון גבוה יותר
+  const higherScores = values.filter((score) => score > scores[targetName]);
+
+  // הדירוג הוא מספר הגבוהים ממנו + 1
+  return higherScores.length + 1;
 }
 
 exports.solution = competitionRank;
