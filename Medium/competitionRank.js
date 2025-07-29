@@ -31,9 +31,9 @@ competition_rank({
   }, "Bruce") ➞ 3
 Notes
 The highest score has a rank value of 1..
-*/
 
-function competitionRank(scores, targetName) {
+
+function competitionRank2(scores, targetName) {
   const values = Object.values(scores);
 
   // סינון כל מי שציון גבוה יותר
@@ -42,5 +42,18 @@ function competitionRank(scores, targetName) {
   // הדירוג הוא מספר הגבוהים ממנו + 1
   return higherScores.length + 1;
 }
+*/
+function competitionRank(scores, targetName) {
+  const values = Object.values(scores);
+  const targetScore = scores[targetName];
 
+  let count = 0;
+  for (const score of values) {
+    if (score > targetScore) {
+      count++;
+    }
+  }
+
+  return count + 1;
+}
 exports.solution = competitionRank;
