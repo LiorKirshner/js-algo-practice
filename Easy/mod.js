@@ -12,14 +12,7 @@ All test cases contain valid numbers.
 */
 
 function mod(a, b) {
-  const result = a % b;
-
-  // אם התוצאה שלילית, תוסיף b כדי להפוך אותה לחיובית
-  if (result < 0) {
-    return result + b;
-  }
-
-  return Math.abs(result);
+  return a - Math.floor(a / b) * b;
 }
 
 exports.solution = mod;
