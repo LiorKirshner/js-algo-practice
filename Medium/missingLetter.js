@@ -17,11 +17,12 @@ The given string will never have more than one missing letter.
 */
 
 function missingLetter(string) {
-  const strArr = string.split("");
-  for (let i = 0; i < strArr.length - 1; i++) {
-    if (strArr[i].charCodeAt(0) + 1 != strArr[i + 1].charCodeAt(0)) {
-      // החזר את האות החסרה (התו הנוכחי + 1)
-      return String.fromCharCode(strArr[i].charCodeAt(0) + 1);
+  for (let i = 0; i < string.length - 1; i++) {
+    const current = string.charCodeAt(i);
+    const next = string.charCodeAt(i + 1);
+
+    if (next - current > 1) {
+      return String.fromCharCode(current + 1);
     }
   }
   return "No Missing Letter";
