@@ -40,8 +40,12 @@ Notes
 There might be a floating point precision problem in here...
 */
 
-function getTotalPrice( /*args*/ ) {
-  //your code
+function getTotalPrice(groceries) {
+  let sum = 0;
+  for (let product of groceries) {
+    sum += product.quantity * product.price;
+  }
+  return Math.round(sum * 100) / 100;
 }
 
 exports.solution = getTotalPrice;
