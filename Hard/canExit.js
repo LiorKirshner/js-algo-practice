@@ -70,13 +70,4 @@ function canExit(mat, i = 0, j = 0) {
   return result;
 }
 
-console.log(
-  canExit([
-    [0, 1, 1, 1, 1, 0, 0],
-    [0, 0, 0, 0, 1, 0, 0],
-    [1, 1, 1, 0, 0, 0, 0],
-    [1, 0, 0, 0, 1, 1, 0],
-    [1, 1, 1, 1, 1, 1, 0],
-  ])
-);
 exports.solution = canExit;
