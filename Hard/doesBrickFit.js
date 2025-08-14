@@ -11,7 +11,7 @@ Notes
 You can turn the brick with any side towards the hole.
 We assume that the brick fits if its sizes equal the ones of the hole (i.e. brick size should be less than or equal to the size of the hole, not strickly less).
 You can't put a brick in at a non-orthogonal angle.
-*/.
+*/
 
 function doesBrickFit(a, b, c, w, h) {
   const [small, medium] = [a, b, c].sort((x, y) => x - y);
