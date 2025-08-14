@@ -25,17 +25,22 @@ Since in the output the numbers 0-8 are used to determine the amount of adjacent
 A wikipedia page explaining how Minesweeper works is available in the Resources tab
 */
 
-function countNeighbors(board, i, j, m, n) {
+function countNeighbors(board, i, j) {
+  const dirs = [
+    [-1, -1],
+    [-1, 0],
+    [-1, 1],
+    [0, -1],
+    [0, 1],
+    [1, -1],
+    [1, 0],
+    [1, 1],
+  ];
   let count = 0;
-  for (let di = -1; di <= 1; di++) {
-    for (let dj = -1; dj <= 1; dj++) {
-      if (di === 0 && dj === 0) continue;
-      const ni = i + di;
-      const nj = j + dj;
-      if (ni >= 0 && ni < m && nj >= 0 && nj < n && board[ni][nj] === 1) {
-        count++;
-      }
-    }
+  for (const [di, dj] of dirs) {
+    const ni = i + di,
+      nj = j + dj;
+    if (board[ni] && board[ni][nj] === 1) count++;
   }
   return count;
 }
@@ -48,20 +53,10 @@ function minesweeperNumbers(board) {
     board[0].length === 0
   )
     return [];
-  const m = board.length;
-  const n = board[0].length;
-  const res = [];
-  for (let i = 0; i < m; i++) {
-    res[i] = [];
-    for (let j = 0; j < n; j++) {
-      if (board[i][j] === 1) {
-        res[i][j] = 9;
-      } else {
-        res[i][j] = countNeighbors(board, i, j, m, n);
-      }
-    }
-  }
-  return res;
+
+  return board.map((row, i) =>
+    row.map((cell, j) => (cell === 1 ? 9 : countNeighbors(board, i, j)))
+  );
 }
 
 exports.solution = minesweeperNumbers;
